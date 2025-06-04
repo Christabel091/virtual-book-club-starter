@@ -7,9 +7,12 @@ let loadReviews = () => {
 }
 document.addEventListener('DOMContentLoaded', () =>{
     loadReviews();
+    const reviewform = document.querySelector("#review-form");
+    reviewform.addEventListener('submit', handleReviewWubmit)
 })
 
-let handleReviewWubmit = () =>{
+let handleReviewWubmit = (event) =>{
+    event.preventDefault();
     console.log();
 }
 const createReview = (review) =>{
@@ -17,11 +20,10 @@ const createReview = (review) =>{
     const review_list = document.createElement('div');
     review_list.className =  'review-list'
     review_list.innerHTML = `
-    
     <p class = 'nook-title'>${review.title}</p>
     <p>${review.reviewText}</p>
     <p> rating: ${review.rating}</p>
-    <button>Likes: ${review.likes}<button/>
-    <button>reposts: ${review.reposts}<button/>`
+    <button>Likes: ${review.likes}</button>
+    <button>reposts: ${review.reposts}</button>`
     return review_list;
 }
